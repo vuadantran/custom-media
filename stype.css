@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #444;
+    margin-top: 20px; /* Add this line to give some space between the header and the video */
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex; /* Add this line to use Flexbox */
+    justify-content: center; /* Add this line to center the .video-container horizontally */
+    align-items: center; /* Add this line to center the .video-container vertically */
+    min-height: 100vh; /* Add this line to make sure the container takes up at least the viewport height */
+}
+
+.video-container {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    /* Center the video player using Flexbox */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Add this line to make sure the video container takes up the full width */
+    max-width: 640px; /* Add this line to limit the maximum width of the video container */
+}
+
+#player {
+    width: 100%;
+    max-width: 640px; /* Add this line to limit the maximum width of the video player */
+    height: 360px;
+    border-radius: 4px;
+}
+
+
+.subtitles {
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    min-height: 50px;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+button {
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 120px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.fa-backward,
+.fa-forward {
+    font-size: 20px;
+}
