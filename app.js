@@ -158,3 +158,16 @@ seekTimeInput.addEventListener('input', function() {
 });
 
 
+// Handle the keyboard event for the left arrow key
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 37) { // Left arrow key
+        backwardCustomSeek();
+    }
+});
+
+// Handle the keyboard event for the right arrow key
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 39) { // Right arrow key
+        forwardCustomSeek();
+    }
+});
