@@ -9,11 +9,15 @@
     <div class="container">
         <h1>Watch YouTube Videos</h1>
         <div class="video-container">
-            <input type="text" id="youtubeLink" placeholder="Paste YouTube URL here">
+            <input type="text" id="youtubeLink" placeholder="Dán link vào đây heo thúi <3" value="https://www.youtube.com/watch?v=Q2T592UDcpE&ab_channel=BroNub">
             <button id="loadButton">Load Video</button>
             <br>
             <div id="player"></div>
             <div id="subtitles" class="subtitles"></div>
+            <div class="control-group">
+                <input type="text" id="video-time" placeholder="HH:mm:ss">
+            </div>
+
             <div class="controls">
                 <div class="control-group">
                     <button id="backwardButton"><i class="fas fa-backward"></i></button>
@@ -23,7 +27,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <input type="text" id="seekTime" placeholder="HH:mm:ss">
+                <input type="text" id="seekTime" placeholder="HH:mm:ss" value="00:00:00">
                 <button id="seekButton">Seek</button>
             </div>
 

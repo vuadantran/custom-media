@@ -142,9 +142,9 @@ function seekToTimestamp(timestamp) {
     }
 }
 
+const seekTimeInput = document.getElementById('seekTime');
 const seekButton = document.getElementById('seekButton');
 seekButton.addEventListener('click', function() {
-    const seekTimeInput = document.getElementById('seekTime');
     const timestamp = seekTimeInput.value;
     seekToTimestamp(timestamp);
     seekTimestamp = timestamp; // Store the timestamp value
@@ -152,7 +152,6 @@ seekButton.addEventListener('click', function() {
 });
 
 // Keep the value in the "Chuyển tới" input field after it loses focus
-const seekTimeInput = document.getElementById('seekTime');
 seekTimeInput.addEventListener('input', function() {
     seekTimestamp = seekTimeInput.value;
 });
@@ -171,3 +170,19 @@ document.addEventListener('keydown', function(event) {
         forwardCustomSeek();
     }
 });
+
+
+const videoTIme = document.getElementById('video-time');
+
+setInterval(() => {
+    const currentTime = player.getCurrentTime();
+    const formattedTime = formatTime(currentTime);
+    videoTIme.value = formattedTime;
+}, 1000);
+
+function formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    seconds = seconds % 60;
+    return `${hours}:${minutes}:${seconds.toFixed(0)}`;
+}

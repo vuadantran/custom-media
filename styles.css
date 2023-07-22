@@ -105,6 +105,14 @@ body {
     font-size: 16px;
 }
 
+#video-time {
+    width: 100px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
 #seekButton {
     background-color: #666;
     color: #fff;
