@@ -55,7 +55,7 @@ const loadButton = document.getElementById('loadButton');
 loadButton.addEventListener('click', loadVideo);
 
 const youtubeLinkInput = document.getElementById('youtubeLink');
-youtubeLinkInput.addEventListener('paste', function(event) {
+youtubeLinkInput.addEventListener('paste', function (event) {
     const pastedUrl = event.clipboardData.getData('text/plain');
     youtubeLinkInput.value = pastedUrl; // Optional: Update the input field with the pasted URL
     loadVideoByUrl(pastedUrl);
@@ -108,12 +108,12 @@ backwardButton.addEventListener('click', backwardCustomSeek);
 
 // Optional: Keep the value in the forward and backward input fields
 const forwardSecondsInput = document.getElementById('forwardSeconds');
-forwardSecondsInput.addEventListener('input', function() {
+forwardSecondsInput.addEventListener('input', function () {
     forwardSecondsInput.setAttribute('value', forwardSecondsInput.value);
 });
 
 const backwardSecondsInput = document.getElementById('backwardSeconds');
-backwardSecondsInput.addEventListener('input', function() {
+backwardSecondsInput.addEventListener('input', function () {
     backwardSecondsInput.setAttribute('value', backwardSecondsInput.value);
 });
 
@@ -144,41 +144,35 @@ function seekToTimestamp(timestamp) {
 
 const seekTimeInput = document.getElementById('seekTime');
 const seekButton = document.getElementById('seekButton');
+
 seekButton.addEventListener('click', function() {
     const timestamp = seekTimeInput.value;
     seekToTimestamp(timestamp);
     seekTimestamp = timestamp; // Store the timestamp value
-    seekTimeInput.value = ''; // Clear the input field after seeking
 });
-
-// Keep the value in the "Chuyển tới" input field after it loses focus
-seekTimeInput.addEventListener('input', function() {
-    seekTimestamp = seekTimeInput.value;
-});
-
 
 // Handle the keyboard event for the left arrow key
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.keyCode === 37) { // Left arrow key
         backwardCustomSeek();
     }
 });
 
 // Handle the keyboard event for the right arrow key
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.keyCode === 39) { // Right arrow key
         forwardCustomSeek();
     }
 });
 
 
-const videoTIme = document.getElementById('video-time');
+const videoTime = document.getElementById('video-time');
 
 setInterval(() => {
     const currentTime = player.getCurrentTime();
     const formattedTime = formatTime(currentTime);
-    videoTIme.value = formattedTime;
-}, 1000);
+    videoTime.innerHTML = formattedTime;
+}, 100);
 
 function formatTime(seconds) {
     const hours = Math.floor(seconds / 3600);
@@ -186,3 +180,14 @@ function formatTime(seconds) {
     seconds = seconds % 60;
     return `${hours}:${minutes}:${seconds.toFixed(0)}`;
 }
+
+
+window.addEventListener('keydown', event => {
+    if (event.keyCode === 32) { // space key
+        if (player.getPlayerState() == 2) {
+            player.playVideo();
+        } else {
+            player.pauseVideo();
+        }
+    }
+});
