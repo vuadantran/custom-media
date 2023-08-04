@@ -151,27 +151,19 @@ seekButton.addEventListener('click', function() {
     seekTimestamp = timestamp; // Store the timestamp value
 });
 
-// Handle the keyboard event for the left arrow key
-document.addEventListener('keydown', function (event) {
-    if (event.keyCode === 37) { // Left arrow key
-        backwardCustomSeek();
-    }
-});
-
-// Handle the keyboard event for the right arrow key
-document.addEventListener('keydown', function (event) {
-    if (event.keyCode === 39) { // Right arrow key
-        forwardCustomSeek();
-    }
-});
-
 
 const videoTime = document.getElementById('video-time');
+const videoVolume = document.getElementById('video-volume'); // Add this line
+
 
 setInterval(() => {
     const currentTime = player.getCurrentTime();
     const formattedTime = formatTime(currentTime);
     videoTime.innerHTML = formattedTime;
+
+    const currentVolume = player.getVolume(); // Get current volume
+    videoVolume.innerHTML = `Volume: ${currentVolume}%`; // Display current volume
+
 }, 100);
 
 function formatTime(seconds) {
@@ -181,6 +173,22 @@ function formatTime(seconds) {
     return `${hours}:${minutes}:${seconds.toFixed(0)}`;
 }
 
+const customVolumeInput = document.getElementById('customVolumeInput');
+
+function increaseVolume() {
+    const currentVolume = player.getVolume();
+    const newVolume = Math.min(100, currentVolume + parseInt(customVolumeInput.value)); // Increase by 10
+
+    player.setVolume(newVolume);
+}
+
+function decreaseVolume() {
+    const currentVolume = player.getVolume();
+    const newVolume = Math.max(0, currentVolume - customVolumeInput.value); // Decrease by 10
+    player.setVolume(newVolume);
+}
+
+
 
 window.addEventListener('keydown', event => {
     if (event.keyCode === 32) { // space key
@@ -189,5 +197,22 @@ window.addEventListener('keydown', event => {
         } else {
             player.pauseVideo();
         }
+    }
+});
+
+// Handle the keyboard event for the arrow down and arrow up keys
+// Handle the keyboard event for the left arrow key
+document.addEventListener('keydown', function (event) {
+    if (event.keyCode === 37) { // Left arrow key
+        backwardCustomSeek();
+    }
+    else if (event.keyCode === 39) { // Right arrow key
+        forwardCustomSeek();
+    }
+    else if (event.keyCode === 38) { // Up arrow key
+        increaseVolume();
+    } 
+    else if (event.keyCode === 40) { // Down arrow key
+        decreaseVolume();
     }
 });

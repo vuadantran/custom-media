@@ -156,3 +156,63 @@ body {
     text-align: center;
     margin-left: 3px;
 }
+
+/* Style for the volume display */
+#video-volume {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Style for the volume controls */
+.volume-controls {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.custom-volume-input {
+    width: 70px;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#applyCustomVolumeButton {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+#applyCustomVolumeButton:hover {
+    background-color: #555;
+}
+
+/* More stylized volume display */
+#video-volume {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #555;
+    text-align: center;
+}
+
+/* Stylish volume controls */
+.volume-controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-volume-input {
+    width: 50px;
+    padding: 5px;
+    font-size: 16px; 
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
