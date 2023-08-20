@@ -63,7 +63,7 @@ function binarySearch(target) {
       right = middle - 1; // Search in the left half
     }
   }
-  return -1; // Target not found
+  return -1;  // Target not found
 }
 
 const loadTranScripts = (videoId) => {
