@@ -68,7 +68,7 @@ function binarySearch(target) {
 
 const loadTranScripts = (videoId) => {
   playing = false;
-  fetch("http://localhost:3000?videoId=" + videoId)
+  fetch("https://heroic-narwhal-27f1e5.netlify.app/.netlify/functions/api?videoId=" + videoId)
     .then((response) => response.json())
     .then((data) => {
       scripts = data;
