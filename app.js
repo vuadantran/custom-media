@@ -55,7 +55,6 @@ function binarySearch(target) {
       target >= scriptData[middle]["time"] &&
       target <= scriptData[middle + 1]["time"]
     ) {
-        console.log('A: ', target, scriptData[middle]["time"], target, scriptData[middle + 1]["time"])
       return middle; // Target found, return its index
     } else if (scriptData[middle]["time"] < target) {
       left = middle + 1; // Search in the right half
@@ -102,7 +101,6 @@ const loadTranScripts = (videoId) => {
           console.log(timeEle.textContent);
           seekToTimestamp(timeEle.textContent, 1);
         });
-
         container.appendChild(transcriptItem);
       });
 
@@ -220,6 +218,7 @@ const videoVolume = document.getElementById("video-volume"); // Add this line
 
 playing = true;
 seeking = false;
+clearPoint = 0;
 
 setInterval(() => {
   const currentTime = player.getCurrentTime();
@@ -235,7 +234,17 @@ setInterval(() => {
       curIndex = curIndex + 1;
       seeking = false;
     }
-    console.log(scriptData[curIndex]);
+    // console.log(scriptData[curIndex]);
+    if (clearPoint == 10) {
+      removeItems = document.querySelectorAll(".playing");
+      if (removeItems.length > 1) {
+        removeItems.forEach((data) => {
+          clearItem = document.getElementById(data.id);
+          clearItem.classList.remove("playing");    
+        })
+      } 
+      clearPoint = 0;  
+    }
     transcriptItem = document.getElementById(scriptData[curIndex].id);
     transcriptItem.classList.add("playing");
 
@@ -244,6 +253,7 @@ setInterval(() => {
 
     caption = document.getElementById("cap");
     caption.innerHTML = scriptData[curIndex].id;
+    clearPoint++;
   }
 }, 300);
 
@@ -309,5 +319,12 @@ document.addEventListener("keydown", function (event) {
   } else if (event.keyCode === 40) {
     // Down arrow key
     decreaseVolume();
+  }
+});
+
+
+document.addEventListener("keydown", (e) => {
+  if (event.keyCode === 32) {
+    e.preventDefault()
   }
 });
