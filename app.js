@@ -1,4 +1,5 @@
 let player;
+autoScroll = true;
 
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
@@ -248,6 +249,10 @@ setInterval(() => {
     transcriptItem = document.getElementById(scriptData[curIndex].id);
     transcriptItem.classList.add("playing");
 
+    if (autoScroll) {
+      transcriptItem.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
+
     prevTranscriptItem = document.getElementById(scriptData[curIndex - 1].id);
     prevTranscriptItem.classList.remove("playing");
 
@@ -322,6 +327,9 @@ document.addEventListener("keydown", function (event) {
   } else if (event.keyCode === 27) {
     // Escape arrow key
     reduce();
+  } else if (event.keyCode === 65) {
+    // Escape arrow key
+    stwichAutoScroll();
   } 
 });
 
@@ -343,3 +351,25 @@ function reduce() {
   }
   
 }
+
+function stwichAutoScroll() {
+  if (autoScroll) {
+    autoScroll = false;
+  }
+  else{
+    autoScroll = true;
+  }
+}
+
+var playbackRateSelector = document.getElementById("playbackRates");
+playbackRateSelector.addEventListener("change", function() {
+  options = playbackRateSelector.querySelectorAll("option");
+  v = 1;
+  for (option of options.values()) {
+    if (option.value === playbackRateSelector.value) {
+      v = option.value;
+    }
+  }
+  console.log(typeof v)
+  player.setPlaybackRate(Number(v))
+});

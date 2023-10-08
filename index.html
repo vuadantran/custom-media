@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>YouTube của Heo Thúi</title>
+    <title>AEL</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="resources/icon.jpg">
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="control-group">
-                    <p type="text" id="video-time" placeholder="HH:mm:ss"></p>
+                    <p type="text" id="video-time" placeholder="HH:mm:ss"></p>                    
                 </div>
 
                 <div class="controls">
@@ -38,13 +38,22 @@
                 <div class="control-group">
                     <input type="text" id="seekTime" placeholder="HH:mm:ss" value="00:00:00">
                     <button id="seekButton">Seek</button>
+
+                    <select id="playbackRates" name="playrate">
+                        <option value="0.25">0.25</option>
+                        <option value="0.5">0.5</option>
+                        <option value="0.75">0.75</option>
+                        <option selected value="1">1</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                    </select>
                 </div>
                 <!-- Add this line to display the volume -->
                 <p id="video-volume">Volume: 100%</p>
                 <div class="volume-controls">
                     <input type="number" id="customVolumeInput" placeholder="Enter custom volume" value="5">
                 </div>
-                <p>Shortcut: Esc</p>
+                <p>Shortcut: Esc (Turn off player) A (Stwich auto scroll)</p>
             </div>
         </div>
         <div id="transcriptContainer">
