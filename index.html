@@ -11,12 +11,11 @@
 <body>
     <div class="container-wrapper">
 
-        <div class="container">
-            <h1 id="title">YouTube của Heo Thúi ne</h1>
+        <div class="container" id="section-one" style="display: initial;">
+            <h1 id="title">Day and night</h1>
             <!-- <img id ="heo" src="resources/icon.jpg" alt="logo" /> -->
             <div class="video-container">
                 <input type="text" id="youtubeLink" placeholder="Dán link vào đây heo thúi <3"
-                
                     value="https://www.youtube.com/watch?v=zB0ldJl2EEM&ab_channel=I%27mMaryhttps://www.youtube.com/watch?v=zB0ldJl2EEM&ab_channel=I%27mMary">
                 <button id="loadButton">Load Video</button>
                 <div id="player"></div>
@@ -31,7 +30,7 @@
                 <div class="controls">
                     <div class="control-group">
                         <button id="backwardButton"><i class="fas fa-backward"></i></button>
-                        <input type="number" id="backwardSeconds" placeholder="Seconds" value="5">
+                        <input type="number" id="backwardSeconds" placeholder="Seconds" value="2">
                         <input type="number" id="forwardSeconds" placeholder="Seconds" value="5">
                         <button id="forwardButton"><i class="fas fa-forward"></i></button>
                     </div>
@@ -45,6 +44,7 @@
                 <div class="volume-controls">
                     <input type="number" id="customVolumeInput" placeholder="Enter custom volume" value="5">
                 </div>
+                <p>Shortcut: Esc</p>
             </div>
         </div>
         <div id="transcriptContainer">

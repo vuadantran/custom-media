@@ -319,7 +319,10 @@ document.addEventListener("keydown", function (event) {
   } else if (event.keyCode === 40) {
     // Down arrow key
     decreaseVolume();
-  }
+  } else if (event.keyCode === 27) {
+    // Escape arrow key
+    reduce();
+  } 
 });
 
 
@@ -328,3 +331,15 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault()
   }
 });
+
+
+function reduce() {
+  const videoContainer = document.getElementById("section-one");
+  if (videoContainer.style.display != "initial") {
+    videoContainer.style.display = "initial";
+  }
+  else {
+    videoContainer.style.display = "none";
+  }
+  
+}
