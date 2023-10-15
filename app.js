@@ -1,5 +1,5 @@
 let player;
-autoScroll = true;
+autoScroll = false;
 
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
@@ -220,6 +220,7 @@ const videoVolume = document.getElementById("video-volume"); // Add this line
 playing = true;
 seeking = false;
 clearPoint = 0;
+curItemGlobal = null;
 
 setInterval(() => {
   const currentTime = player.getCurrentTime();
@@ -247,6 +248,8 @@ setInterval(() => {
       clearPoint = 0;  
     }
     transcriptItem = document.getElementById(scriptData[curIndex].id);
+    curItemGlobal = transcriptItem;
+
     transcriptItem.classList.add("playing");
 
     if (autoScroll) {
@@ -328,8 +331,11 @@ document.addEventListener("keydown", function (event) {
     // Escape arrow key
     reduce();
   } else if (event.keyCode === 65) {
-    // Escape arrow key
+    // Escape key
     stwichAutoScroll();
+  } else if (event.keyCode === 78) {
+    // N key
+    scrollNow(event);
   } 
 });
 
@@ -359,6 +365,10 @@ function stwichAutoScroll() {
   else{
     autoScroll = true;
   }
+}
+
+function scrollNow(e) {
+  curItemGlobal.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
 }
 
 var playbackRateSelector = document.getElementById("playbackRates");
