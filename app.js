@@ -226,6 +226,7 @@ setInterval(() => {
   const currentTime = player.getCurrentTime();
   const formattedTime = formatTime(currentTime);
   videoTime.innerHTML = formattedTime;
+  autoScroll = false;
 
   const currentVolume = player.getVolume(); // Get current volume
   videoVolume.innerHTML = `Volume: ${currentVolume}%`; // Display current volume
@@ -331,7 +332,7 @@ document.addEventListener("keydown", function (event) {
     // Escape arrow key
     reduce();
   } else if (event.keyCode === 65) {
-    // Escape key
+    // A key
     stwichAutoScroll();
   } else if (event.keyCode === 78) {
     // N key
