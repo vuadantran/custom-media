@@ -69,6 +69,8 @@ function binarySearch(target) {
 const loadTranScripts = (videoId) => {
   playing = false;
   fetch("https://heroic-narwhal-27f1e5.netlify.app/.netlify/functions/api?videoId=" + videoId)
+  // fetch("http://localhost:3000?videoId=" + videoId)
+
     .then((response) => response.json())
     .then((data) => {
       scripts = data;
@@ -80,8 +82,9 @@ const loadTranScripts = (videoId) => {
       }
 
       scripts.forEach((item) => {
+        timeMs = item.start * 1000;
         scriptData.push({
-          time: item.offset / 1000,
+          time: timeMs,
           id: item.text,
         });
         const transcriptItem = document.createElement("div");
@@ -94,7 +97,7 @@ const loadTranScripts = (videoId) => {
         transcriptItem.appendChild(textElement);
 
         const timeEle = document.createElement("div");
-        timeEle.textContent = formatTimeMs(item.offset);
+        timeEle.textContent = formatTimeMs(timeMs);
         timeEle.classList.add("transcript-time");
         transcriptItem.appendChild(timeEle);
 
