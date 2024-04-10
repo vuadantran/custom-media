@@ -45,7 +45,8 @@ function loadVideo() {
 }
 
 scriptData = [];
-function binarySearch(target) {
+function binarySearch(time) {
+  target = time * 1000
   let left = 0;
   let right = scriptData.length - 1;
 
